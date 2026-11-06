@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>短剧网官网-短剧网在线观看_短剧网热播剧集与免费追剧入口</title>
+<meta name="description" content="短剧网官网首页，聚合短剧网热播剧集、分类频道与追剧入口。了解短剧网官网的剧集浏览方式、热门题材与免费观看路径，快速找到想看的短剧。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161a2b'/%3E%3Cpath d='M24 18l22 14-22 14z' fill='%23ff5c7a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#0f1220;
+  --bg-soft:#161a2b;
+  --card:#1c2136;
+  --line:#2a3150;
+  --text:#eef1f8;
+  --muted:#9aa3bd;
+  --accent:#ff5c7a;
+  --accent2:#ffb457;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* 页头 */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(15,18,32,.88);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.header-inner{display:flex;align-items:center;gap:28px;min-height:68px}
+.logo{display:flex;align-items:center;gap:10px;font-size:19px;font-weight:700;letter-spacing:.5px;white-space:nowrap}
+.logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#ff5c7a,#ffb457);display:grid;place-items:center;flex:none}
+.logo-mark svg{width:16px;height:16px}
+.nav{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.nav a{
+  font-size:14px;color:var(--muted);padding:7px 12px;border-radius:9px;
+  transition:.2s;
+}
+.nav a:hover{color:var(--text);background:var(--card)}
+.nav a.cta{color:#1a1020;background:linear-gradient(135deg,#ff5c7a,#ffb457);font-weight:600}
+.nav a.cta:hover{opacity:.9;background:linear-gradient(135deg,#ff5c7a,#ffb457)}
+
+/* 首屏 */
+.hero{
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(900px 380px at 82% -10%,rgba(255,92,122,.20),transparent 65%),
+    radial-gradient(700px 320px at 8% 110%,rgba(255,180,87,.12),transparent 60%);
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:48px;
+  align-items:center;padding:64px 0 60px;
+}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--accent2);
+  border:1px solid rgba(255,180,87,.35);
+  background:rgba(255,180,87,.08);
+  padding:5px 12px;border-radius:999px;margin-bottom:20px;
+}
+h1{
+  font-size:clamp(30px,4.6vw,50px);
+  line-height:1.2;letter-spacing:1px;font-weight:800;
+  margin-bottom:18px;
+}
+h1 .accent{
+  background:linear-gradient(100deg,#ff5c7a,#ffb457);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.hero-lead{font-size:16px;color:var(--muted);max-width:36em;margin-bottom:26px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:12px;font-size:15px;font-weight:600;
+  transition:.2s;
+}
+.btn-primary{background:linear-gradient(135deg,#ff5c7a,#ff8a5c);color:#1a1020;box-shadow:0 10px 26px -12px rgba(255,92,122,.9)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line);color:var(--text);background:rgba(255,255,255,.02)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.btn[aria-disabled="true"]{opacity:.55;pointer-events:none}
+
+/* 首屏视觉 */
+.hero-visual{position:relative}
+.poster-stack{position:relative;height:320px}
+.poster{
+  position:absolute;border-radius:14px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.09);
+  box-shadow:0 24px 48px -20px rgba(0,0,0,.8);
+}
+.poster.p1{width:170px;height:250px;left:6%;top:22px;transform:rotate(-7deg);background:linear-gradient(160deg,#3a2b52,#1b1f36)}
+.poster.p2{width:180px;height:266px;left:34%;top:0;z-index:2;background:linear-gradient(160deg,#5a2138,#1b1f36)}
+.poster.p3{width:160px;height:236px;right:2%;top:44px;transform:rotate(7deg);background:linear-gradient(160deg,#4a3a1c,#1b1f36)}
+.poster .ph{padding:14px;height:100%;display:flex;flex-direction:column;justify-content:flex-end}
+.poster .tag{font-size:11px;color:#ffd9a8;background:rgba(0,0,0,.4);padding:2px 8px;border-radius:6px;align-self:flex-start;margin-bottom:8px}
+.poster .name{font-size:15px;font-weight:700;line-height:1.4}
+.poster .meta{font-size:11px;color:#b9c0d8;margin-top:4px}
+.poster .glow{position:absolute;inset:0;background:radial-gradient(circle at 30% 20%,rgba(255,92,122,.35),transparent 60%)}
+
+/* 搜索条 */
+.search-band{
+  background:var(--bg-soft);
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.search-inner{display:flex;gap:12px;align-items:center;padding:20px 0;flex-wrap:wrap}
+.search-inner label{font-size:14px;color:var(--muted);white-space:nowrap}
+.search-box{display:flex;flex:1;min-width:240px;gap:10px}
+.search-box input{
+  flex:1;background:var(--card);border:1px solid var(--line);
+  color:var(--text);border-radius:11px;padding:11px 16px;font-size:14px;font-family:inherit;
+  outline:none;transition:.2s;
+}
+.search-box input:focus{border-color:var(--accent)}
+.search-box input::placeholder{color:#6b7391}
+.search-box button{
+  border:none;cursor:pointer;font-family:inherit;font-size:14px;font-weight:600;
+  padding:11px 22px;border-radius:11px;color:#1a1020;
+  background:linear-gradient(135deg,#ff5c7a,#ffb457);
+}
+.search-result{width:100%;font-size:13px;color:var(--accent2);min-height:0}
+
+/* 通用分区 */
+section{padding:64px 0}
+.sec-head{margin-bottom:34px;max-width:44em}
+.sec-head h2{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:.5px;margin-bottom:10px}
+.sec-head h2 em{font-style:normal;color:var(--accent)}
+.sec-head p{color:var(--muted);font-size:15px}
+
+/* 分类卡片 */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cat-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 20px;transition:.25s;display:block;
+}
+.cat-card:hover{transform:translateY(-4px);border-color:rgba(255,92,122,.55)}
+.cat-icon{
+  width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+  background:rgba(255,92,122,.12);margin-bottom:14px;
+}
+.cat-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.8}
+.cat-card h3{font-size:17px;margin-bottom:6px}
+.cat-card p{font-size:13px;color:var(--muted);line-height:1.65}
+.cat-card .count{display:inline-block;margin-top:12px;font-size:12px;color:var(--accent2)}
+
+/* 热播列表 */
+.hot-list{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.hot-item{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;transition:.25s;
+}
+.hot-item:hover{border-color:rgba(255,180,87,.5);transform:translateY(-3px)}
+.hot-cover{height:120px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:14px}
+.hot-cover .rank{
+  position:absolute;top:12px;left:12px;font-size:12px;font-weight:700;
+  background:rgba(0,0,0,.45);padding:3px 9px;border-radius:7px;color:#ffd9a8;
+}
+.hot-body{padding:16px 18px 20px}
+.hot-body h3{font-size:16px;margin-bottom:6px}
+.hot-body p{font-size:13px;color:var(--muted);margin-bottom:12px}
+.hot-body .meta{font-size:12px;color:#7c85a3;display:flex;gap:12px;flex-wrap:wrap}
+
+/* 正文阅读区 */
+.reading{
+  background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.reading-grid{display:grid;grid-template-columns:1fr 320px;gap:52px;align-items:start}
+.prose h2{font-size:24px;margin-bottom:16px;letter-spacing:.5px}
+.prose h3{font-size:17px;margin:26px 0 8px;color:var(--accent2)}
+.prose p{color:#c6cce0;font-size:15px;margin-bottom:14px;line-height:1.9}
+.prose strong{color:#fff}
+
+/* 侧栏 */
+.side-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;margin-bottom:18px;
+}
+.side-card h3{font-size:15px;margin-bottom:14px;letter-spacing:.5px}
+.side-card ul{list-style:none;display:grid;gap:11px}
+.side-card li{font-size:13.5px;color:var(--muted);display:flex;gap:9px;line-height:1.6}
+.side-card li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);flex:none;margin-top:9px}
+.side-card .dl{display:block;margin-top:6px}
+
+/* 使用路径 */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:step}
+.step{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px 22px;position:relative;
+}
+.step::before{
+  counter-increment:step;content:"0" counter(step);
+  font-size:34px;font-weight:800;color:rgba(255,92,122,.22);
+  display:block;line-height:1;margin-bottom:12px;
+}
+.step h3{font-size:16px;margin-bottom:8px}
+.step p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* 常见问答 */
+.faq{display:grid;gap:14px;max-width:860px}
+.faq details{
+  background:var(--card);border:1px solid var(--line);border-radius:13px;
+  padding:0 20px;transition:.2s;
+}
+.faq details[open]{border-color:rgba(255,92,122,.45)}
+.faq summary{
+  cursor:pointer;font-size:15px;font-weight:600;padding:16px 0;
+  list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent);font-size:20px;font-weight:400;line-height:1}
+.faq details[open] summary::after{content:"−"}
+.faq .ans{font-size:14px;color:var(--muted);padding:0 0 18px;line-height:1.85;max-width:56em}
+
+/* 页尾 */
+.site-footer{
+  border-top:1px solid var(--line);background:var(--bg-soft);
+  padding:44px 0 34px;margin-top:0;
+}
+.footer-top{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:28px}
+.footer-brand{max-width:340px}
+.footer-brand .logo{margin-bottom:12px}
+.footer-brand p{font-size:13px;color:var(--muted);line-height:1.8}
+.footer-cols{display:flex;gap:56px;flex-wrap:wrap}
+.footer-col h4{font-size:13px;color:#d6dbec;margin-bottom:12px;letter-spacing:.5px}
+.footer-col a{display:block;font-size:13px;color:var(--muted);margin-bottom:9px;transition:.2s}
+.footer-col a:hover{color:var(--accent)}
+.footer-bottom{
+  border-top:1px solid var(--line);padding-top:20px;
+  font-size:12.5px;color:#6b7391;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+
+/* 响应式 */
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:36px;padding:48px 0}
+  .hero-visual{order:2}
+  .poster-stack{height:280px;max-width:400px}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .hot-list{grid-template-columns:repeat(2,1fr)}
+  .reading-grid{grid-template-columns:1fr;gap:32px}
+  .steps{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .header-inner{min-height:auto;flex-wrap:wrap;padding:12px 0;gap:10px}
+  .nav{margin-left:0;width:100%;gap:4px}
+  .nav a{padding:6px 10px;font-size:13px}
+  h1{font-size:29px}
+  section{padding:44px 0}
+  .cat-grid,.hot-list{grid-template-columns:1fr}
+  .poster.p1{left:0}
+  .poster.p3{right:0}
+  .poster-stack{height:260px}
+  .poster.p1,.poster.p3{width:140px;height:210px}
+  .poster.p2{width:150px;height:224px;left:30%}
+  .footer-cols{gap:32px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="logo" href="#top" aria-label="短剧网官网 首页">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" fill="#1a1020"/></svg>
+      </span>
+      短剧网官网
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#categories">剧集分类</a>
+      <a href="#hot">热播榜单</a>
+      <a href="#guide">观看路径</a>
+      <a href="#faq">常见问题</a>
+      <a class="cta" href="#hot">免费追剧</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">● 竖屏短剧 · 随时开看</span>
+        <h1>短剧网官网</h1>
+        <p class="hero-lead">
+          短剧网官网是短剧内容的浏览入口，按题材、热度与更新节奏整理剧集，让观众用更少的时间找到想看的竖屏短剧。打开短剧网官网，即可从分类频道与热播榜单进入追剧。
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#hot">进入热播榜单</a>
+          <a class="btn btn-ghost" href="#categories">浏览剧集分类</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="poster-stack">
+          <div class="poster p1">
+            <div class="glow"></div>
+            <div class="ph">
+              <span class="tag">都市情感</span>
+              <span class="name">错位人生</span>
+              <span class="meta">竖屏 · 多集连播</span>
+            </div>
+          </div>
+          <div class="poster p2">
+            <div class="glow"></div>
+            <div class="ph">
+              <span class="tag">逆袭热血</span>
+              <span class="name">归来仍是少年</span>
+              <span class="meta">竖屏 · 每日更新</span>
+            </div>
+          </div>
+          <div class="poster p3">
+            <div class="glow"></div>
+            <div class="ph">
+              <span class="tag">古装轻喜</span>
+              <span class="name">小厨娘上位记</span>
+              <span class="meta">竖屏 · 全集可看</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 搜索 -->
+  <div class="search-band">
+    <div class="wrap search-inner">
+      <label for="searchInput">站内找剧</label>
+      <div class="search-box">
+        <input id="searchInput" type="search" placeholder="输入剧名或题材，如：逆袭、古装、甜宠" autocomplete="off">
+        <button type="button" id="searchBtn">搜索</button>
+      </div>
+      <p class="search-result" id="searchResult" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <!-- 分类 -->
+  <section id="categories">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>按题材进入 <em>剧集分类</em></h2>
+        <p>短剧网官网把在架短剧按主要看点归入不同频道，题材是第一层筛选条件，适合还不确定看什么的观众。</p>
+      </div>
+      <div class="cat-grid">
+        <a class="cat-card" href="#hot">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.6-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.4-7 10-7 10z"/></svg></span>
+          <h3>都市情感</h3>
+          <p>职场、婚恋与家庭关系为主线，节奏紧凑，适合通勤场景观看。</p>
+          <span class="count">频道入口 →</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg></span>
+          <h3>逆袭热血</h3>
+          <p>主角成长与身份反转是核心看点，单集冲突明确，追更连贯。</p>
+          <span class="count">频道入口 →</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><path d="M3 8l9-5 9 5-9 5z"/><path d="M3 13l9 5 9-5"/></svg></span>
+          <h3>古装轻喜</h3>
+          <p>以古代背景搭配轻喜剧桥段，服化道与台词风格统一，观感轻松。</p>
+          <span class="count">频道入口 →</span>
+        </a>
+        <a class="cat-card" href="#hot">
+          <span class="cat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></span>
+          <h3>悬疑短篇</h3>
+          <p>篇幅短、线索集中，单部即可看完，适合想一次追完的观众。</p>
+          <span class="count">频道入口 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热播 -->
+  <section id="hot" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>热播榜单与 <em>更新节奏</em></h2>
+        <p>榜单按近期热度排列，每部剧标注题材与更新状态，方便判断是否现在开追。短剧网官网的榜单会随剧集上新调整。</p>
+      </div>
+      <div class="hot-list">
+        <article class="hot-item">
+          <div class="hot-cover" style="background:linear-gradient(140deg,#5a2138,#1b1f36)">
+            <span class="rank">TOP 1</span>
+          </div>
+          <div class="hot-body">
+            <h3>错位人生</h3>
+            <p>都市情感 · 身份互换后重新面对工作与亲密关系。</p>
+            <div class="meta"><span>竖屏</span><span>连载中</span><span>都市情感</span></div>
+          </div>
+        </article>
+        <article class="hot-item">
+          <div class="hot-cover" style="background:linear-gradient(140deg,#3a2b52,#1b1f36)">
+            <span class="rank">TOP 2</span>
+          </div>
+          <div class="hot-body">
+            <h3>归来仍是少年</h3>
+            <p>逆袭热血 · 低谷起步，以阶段性目标推进主线。</p>
+            <div class="meta"><span>竖屏</span><span>每日更新</span><span>逆袭热血</span></div>
+          </div>
+        </article>
+        <article class="hot-item">
+          <div class="hot-cover" style="background:linear-gradient(140deg,#4a3a1c,#1b1f36)">
+            <span class="rank">TOP 3</span>
+          </div>
+          <div class="hot-body">
+            <h3>小厨娘上位记</h3>
+            <p>古装轻喜 · 以饮食手艺为线索展开的古代生活故事。</p>
+            <div class="meta"><span>竖屏</span><span>全集可看</span><span>古装轻喜</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 正文阅读 -->
+  <div class="reading">
+    <section id="guide">
+      <div class="wrap reading-grid">
+        <div class="prose">
+          <h2>短剧网官网能看什么</h2>
+          <p>
+            短剧网官网面向竖屏短剧观众，核心任务只有两件：找到剧，然后看下去。页面结构围绕这两件事展开——先按题材分类缩小范围，再用热播榜单判断当下值得开追的作品，最后进入具体剧集页观看。短剧网官网不追求片库数量堆叠，而是把每部剧的题材、篇幅与更新状态标清楚，减少选择成本。
+          </p>
+          <h3>题材分类是第一层筛选</h3>
+          <p>
+            都市情感、逆袭热血、古装轻喜、悬疑短篇是短剧网官网当前划分的四类主要频道。分类依据是剧集的主要看点，而不是拍摄年份或出品方。观众如果只是想利用碎片时间，悬疑短篇这类单部可看完的剧更合适；如果想跟着更新节奏追，连载中的都市情感与逆袭热血更对路。
+          </p>
+          <h3>热播榜单提供开追参考</h3>
+          <p>
+            榜单反映的是近期站内热度，<strong>不是长期评分</strong>，也不代表剧集质量排名。短剧网官网在榜单卡片上同时标注更新状态，是因为短剧的更新节奏差异较大：有的每日更新，有的已全集可看。先看清状态再决定是否追更，能避免看到一半等待更新的情况。
+          </p>
+          <h3>观看前的三点提示</h3>
+          <p>
+            第一，短剧以竖屏形式呈现，建议在手机上观看，横屏设备可能需要手动调整画面比例。第二，连载剧集按集更新，收藏后回访比记住剧名更方便。第三，短剧网官网的站内搜索支持剧名与题材关键词，输入“逆袭”“古装”这类词也能得到结果，适合记不住完整剧名的情况。
+          </p>
+        </div>
+        <aside>
+          <div class="side-card">
+            <h3>快速开始</h3>
+            <ul>
+              <li>从顶部导航进入剧集分类</li>
+              <li>在搜索框输入剧名或题材</li>
+              <li>查看榜单卡片的更新状态</li>
+              <li>收藏正在追更的剧集</li>
+            </ul>
+          </div>
+          <div class="side-card">
+            <h3>下载与安装</h3>
+            <ul>
+              <li>短剧网官网以网页形式直接访问，无需安装</li>
+              <li>如需客户端版本，可留意后续上架信息</li>
+            </ul>
+            <a class="btn btn-ghost dl" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <!-- 使用路径 -->
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>三步找到 <em>想看的短剧</em></h2>
+        <p>短剧网官网的访问路径尽量短，从进入首页到开始播放，通常不超过三次点击。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>选题材或搜剧名</h3>
+          <p>不确定看什么就从四个题材频道里挑一个；已经知道剧名，直接在搜索框输入关键词。</p>
+        </div>
+        <div class="step">
+          <h3>看状态再开追</h3>
+          <p>在榜单或列表页确认更新状态与篇幅，全集可看的适合一口气追完，连载中的适合每天回访。</p>
+        </div>
+        <div class="step">
+          <h3>收藏并继续观看</h3>
+          <p>收藏后可从个人页面快速回到剧集，避免重复搜索。短剧网官网的搜索记录也可作为回访线索。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>关于短剧网官网的 <em>常见问题</em></h2>
+        <p>以下回答基于短剧网官网当前页面提供的功能与信息范围。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>短剧网官网需要注册才能看剧吗？</summary>
+          <p class="ans">浏览分类、榜单与剧集信息不需要注册；涉及收藏与观看记录的功能，请以站内提示为准，页面会在相关入口给出说明。</p>
+        </details>
+        <details>
+          <summary>为什么有的剧每天更新，有的已经全集？</summary>
+          <p class="ans">短剧的更新节奏由剧集本身的排期决定。短剧网官网在剧集卡片上标注“连载中”“每日更新”或“全集可看”，观众可据此判断是追更还是一次看完。</p>
+        </details>
+        <details>
+          <summary>搜索不到剧名怎么办？</summary>
+          <p class="ans">可以尝试只输入题材关键词，例如“逆袭”“古装”“甜宠”，或输入剧名中的两三个字。站内搜索按关键词匹配，完整剧名记不全时同样可以使用。</p>
+        </details>
+        <details>
+          <summary>在电脑上观看画面比例不对？</summary>
+          <p class="ans">短剧多为竖屏制作，电脑横屏播放时可能出现留白或画面偏窄。短剧网官网建议优先使用手机访问，获得更贴近原片的观看比例。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="logo" href="#top">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7z" fill="#1a1020"/></svg>
+          </span>
+          短剧网官网
+        </a>
+        <p>短剧网官网是竖屏短剧的浏览与观看入口，按题材整理剧集，标注更新状态，帮助观众快速找到想看的短剧。</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>内容分类</h4>
+          <a href="#categories">都市情感</a>
+          <a href="#categories">逆袭热血</a>
+          <a href="#categories">古装轻喜</a>
+          <a href="#categories">悬疑短篇</a>
+        </div>
+        <div class="footer-col">
+          <h4>站内导航</h4>
+          <a href="#hot">热播榜单</a>
+          <a href="#guide">观看路径</a>
+          <a href="#faq">常见问题</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 短剧网官网 · 内容以站内实际展示为准</span>
+      <a href="#top">返回顶部</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('searchInput');
+  var btn = document.getElementById('searchBtn');
+  var out = document.getElementById('searchResult');
+  var pool = ['错位人生','归来仍是少年','小厨娘上位记','都市情感','逆袭热血','古装轻喜','悬疑短篇','甜宠','古装','逆袭'];
+  function run(){
+    var q = (input.value || '').trim();
+    if(!q){ out.textContent = '请输入剧名或题材关键词。'; return; }
+    var hit = pool.filter(function(k){ return k.indexOf(q) !== -1 || q.indexOf(k) !== -1; });
+    if(hit.length){
+      out.textContent = '找到相关结果：' + hit.slice(0,4).join('、') + '。可前往热播榜单查看。';
+    }else{
+      out.textContent = '暂未匹配到“' + q + '”，可尝试更短的题材词，如“逆袭”“古装”。';
+    }
+  }
+  btn.addEventListener('click', run);
+  input.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); run(); } });
+})();
+</script>
+</body>
+</html>
