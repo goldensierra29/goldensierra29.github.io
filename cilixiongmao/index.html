@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>磁力熊猫-磁力熊猫磁力搜索_磁力链接资源检索</title>
+<meta name="description" content="磁力熊猫是一个磁力链接搜索与资源检索入口。磁力熊猫聚合多来源磁力索引，支持关键词检索、分类浏览与链接复制，帮助访问者快速找到所需的磁力资源信息。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230f1a16'/%3E%3Ccircle cx='24' cy='22' r='8' fill='%23f2f5f0'/%3E%3Ccircle cx='42' cy='22' r='8' fill='%23f2f5f0'/%3E%3Ccircle cx='24' cy='23' r='3.4' fill='%230f1a16'/%3E%3Ccircle cx='42' cy='23' r='3.4' fill='%230f1a16'/%3E%3Cellipse cx='33' cy='40' rx='16' ry='13' fill='%23f2f5f0'/%3E%3Cellipse cx='33' cy='43' rx='5' ry='4' fill='%230f1a16'/%3E%3Cpath d='M20 50v8M46 50v8' stroke='%2376c7a4' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#0f1a16;
+  --ink-2:#24312b;
+  --muted:#5c6b63;
+  --line:#dfe6e1;
+  --paper:#f7f9f6;
+  --card:#ffffff;
+  --green:#1f7a58;
+  --green-soft:#e4f2ea;
+  --bamboo:#76c7a4;
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",system-ui,-apple-system,sans-serif;
+  color:var(--ink-2);
+  background:var(--paper);
+  line-height:1.75;
+  font-size:16px;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* 页头 */
+header.site{
+  position:sticky;top:0;z-index:20;
+  background:rgba(247,249,246,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.head-inner{display:flex;align-items:center;gap:18px;min-height:66px}
+.logo{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.logo-mark{width:34px;height:34px;flex-shrink:0}
+.logo-text{font-size:18px;font-weight:800;letter-spacing:.02em;color:var(--ink);white-space:nowrap}
+nav.main{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+nav.main a{
+  font-size:14.5px;color:var(--muted);padding:7px 12px;border-radius:999px;
+  transition:background .18s,color .18s;
+}
+nav.main a:hover,nav.main a:focus-visible{background:var(--green-soft);color:var(--green);outline:none}
+
+/* 首屏 */
+.hero{
+  padding:52px 0 44px;
+  background:
+    radial-gradient(900px 320px at 88% -10%,rgba(118,199,164,.22),transparent 70%),
+    linear-gradient(180deg,#ffffff 0%,var(--paper) 100%);
+  border-bottom:1px solid var(--line);
+}
+.hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:40px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;color:var(--green);
+  background:var(--green-soft);padding:5px 12px;border-radius:999px;letter-spacing:.02em;
+}
+h1{
+  font-size:clamp(30px,4.6vw,46px);
+  line-height:1.22;
+  letter-spacing:-.01em;
+  margin:16px 0 14px;
+  color:var(--ink);
+  font-weight:800;
+}
+.hero p.lead{margin:0 0 24px;color:var(--muted);font-size:16.5px;max-width:36em}
+
+/* 搜索 */
+.search-box{
+  display:flex;gap:10px;background:var(--card);border:1px solid var(--line);
+  padding:8px;border-radius:14px;box-shadow:0 8px 24px rgba(15,26,22,.05);
+  max-width:560px;flex-wrap:wrap;
+}
+.search-box input{
+  flex:1 1 200px;min-width:0;border:none;background:transparent;
+  font:inherit;font-size:15.5px;padding:10px 12px;color:var(--ink);
+}
+.search-box input:focus{outline:none}
+.search-box button{
+  flex:0 0 auto;border:none;cursor:pointer;font:inherit;font-weight:700;font-size:15px;
+  background:var(--green);color:#fff;padding:11px 22px;border-radius:10px;
+  transition:filter .18s;
+}
+.search-box button:hover{filter:brightness(1.08)}
+.quick-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:13.5px}
+.quick-tags span{color:var(--muted)}
+.quick-tags a{
+  color:var(--green);background:#fff;border:1px solid var(--line);
+  padding:3px 10px;border-radius:999px;
+}
+.quick-tags a:hover{border-color:var(--bamboo)}
+.search-hint{font-size:13px;color:var(--muted);margin:10px 0 0;min-height:1.4em}
+
+/* 首屏插画 */
+.hero-art{display:flex;justify-content:center}
+.hero-art svg{width:100%;max-width:330px;height:auto}
+
+/* 通用区块 */
+section{padding:52px 0}
+.sec-head{margin-bottom:26px;max-width:44em}
+.sec-head h2{
+  font-size:clamp(21px,2.6vw,27px);line-height:1.3;margin:0 0 8px;
+  color:var(--ink);font-weight:800;letter-spacing:-.005em;
+}
+.sec-head p{margin:0;color:var(--muted);font-size:15px}
+
+/* 卡片网格 */
+.grid{display:grid;gap:18px}
+.grid.g3{grid-template-columns:repeat(3,1fr)}
+.grid.g2{grid-template-columns:repeat(2,1fr)}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px;transition:border-color .18s,transform .18s,box-shadow .18s;
+}
+.card:hover{border-color:var(--bamboo);transform:translateY(-2px);box-shadow:0 10px 26px rgba(15,26,22,.06)}
+.card .ico{
+  width:40px;height:40px;border-radius:11px;background:var(--green-soft);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+}
+.card h3{margin:0 0 8px;font-size:17px;color:var(--ink);font-weight:700}
+.card p{margin:0;font-size:14.5px;color:var(--muted)}
+
+/* 资源列表 */
+.list{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.list-item{
+  display:flex;gap:16px;align-items:flex-start;padding:18px 22px;
+  border-bottom:1px solid var(--line);
+}
+.list-item:last-child{border-bottom:none}
+.list-item .tag{
+  flex:0 0 auto;font-size:12.5px;font-weight:700;color:var(--green);
+  background:var(--green-soft);padding:3px 10px;border-radius:6px;margin-top:3px;
+}
+.list-item .body{min-width:0}
+.list-item .body strong{display:block;font-size:15.5px;color:var(--ink);margin-bottom:3px;word-break:break-word}
+.list-item .body span{font-size:13.5px;color:var(--muted)}
+.list-item .hash{
+  display:block;margin-top:6px;font-family:ui-monospace,Menlo,Consolas,monospace;
+  font-size:12.5px;color:#7d8b83;word-break:break-all;
+}
+
+/* 说明两栏 */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:start}
+.prose p{margin:0 0 14px;font-size:15.5px;color:var(--ink-2)}
+.prose p:last-child{margin-bottom:0}
+.panel{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;
+}
+.panel h3{margin:0 0 14px;font-size:16.5px;color:var(--ink);font-weight:700}
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+.steps li{
+  position:relative;padding-left:34px;margin-bottom:14px;font-size:14.5px;color:var(--muted);
+  counter-increment:s;
+}
+.steps li:last-child{margin-bottom:0}
+.steps li::before{
+  content:counter(s);position:absolute;left:0;top:1px;
+  width:22px;height:22px;border-radius:50%;background:var(--green);color:#fff;
+  font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;
+}
+.steps li b{color:var(--ink-2);font-weight:700}
+
+/* 问答 */
+.faq details{
+  background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:16px 20px;margin-bottom:12px;
+}
+.faq details[open]{border-color:var(--bamboo)}
+.faq summary{
+  cursor:pointer;font-weight:700;color:var(--ink);font-size:15.5px;list-style:none;
+  display:flex;justify-content:space-between;gap:12px;align-items:center;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-weight:400;color:var(--green);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin:12px 0 0;font-size:14.5px;color:var(--muted)}
+
+/* 下载条 */
+.dl-bar{
+  background:var(--ink);color:#eef3ef;border-radius:20px;padding:32px;
+  display:flex;gap:24px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+}
+.dl-bar h2{margin:0 0 6px;font-size:20px;color:#fff;font-weight:800}
+.dl-bar p{margin:0;font-size:14.5px;color:#b9c7bf;max-width:46em}
+.btn-dl{
+  display:inline-flex;align-items:center;gap:8px;background:var(--bamboo);color:#0f1a16;
+  font-weight:800;font-size:15px;padding:12px 28px;border-radius:10px;
+  pointer-events:none;opacity:.92;
+}
+
+/* 页尾 */
+footer.site{
+  border-top:1px solid var(--line);background:#fff;padding:34px 0 40px;margin-top:8px;
+}
+.foot-top{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.foot-top .logo-text{font-size:16.5px}
+.foot-links{display:flex;gap:18px;flex-wrap:wrap;font-size:14px;color:var(--muted);margin-bottom:14px}
+.foot-links a:hover{color:var(--green)}
+.copy{font-size:13px;color:#8b978f;margin:0}
+
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .hero-art{order:-1}
+  .hero-art svg{max-width:200px}
+  .split{grid-template-columns:1fr;gap:22px}
+  .grid.g3{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  body{font-size:15.5px}
+  .head-inner{flex-wrap:wrap;gap:8px;padding:10px 0}
+  nav.main{margin-left:0;width:100%;gap:2px}
+  nav.main a{padding:6px 10px;font-size:13.5px}
+  .hero{padding:34px 0 30px}
+  .grid.g3,.grid.g2{grid-template-columns:1fr}
+  section{padding:38px 0}
+  .list-item{flex-direction:column;gap:6px;padding:16px 18px}
+  .dl-bar{padding:24px;border-radius:16px}
+  .btn-dl{width:100%;justify-content:center}
+  .hero p.lead{font-size:15.5px}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap head-inner">
+    <a class="logo" href="#top" aria-label="磁力熊猫 首页">
+      <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#0f1a16"/>
+        <circle cx="24" cy="22" r="8" fill="#f2f5f0"/>
+        <circle cx="42" cy="22" r="8" fill="#f2f5f0"/>
+        <circle cx="24" cy="23" r="3.4" fill="#0f1a16"/>
+        <circle cx="42" cy="23" r="3.4" fill="#0f1a16"/>
+        <ellipse cx="33" cy="40" rx="16" ry="13" fill="#f2f5f0"/>
+        <ellipse cx="33" cy="43" rx="5" ry="4" fill="#0f1a16"/>
+        <path d="M20 50v8M46 50v8" stroke="#76c7a4" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">磁力熊猫</span>
+    </a>
+    <nav class="main" aria-label="主导航">
+      <a href="#search">资源检索</a>
+      <a href="#index">索引分类</a>
+      <a href="#latest">最新收录</a>
+      <a href="#howto">使用说明</a>
+      <a href="#faq">常见问题</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 首屏 -->
+  <section class="hero" id="search">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">磁力链接搜索入口</span>
+        <h1>磁力熊猫</h1>
+        <p class="lead">磁力熊猫是一个磁力链接检索入口，把分散在各处的磁力索引聚合到同一页面。输入关键词即可查找资源名称、文件大小与磁力哈希，并在需要时复制链接交给下载工具。</p>
+
+        <form class="search-box" role="search" id="searchForm" onsubmit="return false;">
+          <label for="kw" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">搜索关键词</label>
+          <input id="kw" name="kw" type="search" placeholder="输入影片、软件或资料名称" autocomplete="off">
+          <button type="submit" id="searchBtn">搜索磁力</button>
+        </form>
+        <p class="search-hint" id="hint" aria-live="polite">支持按名称、清晰度或文件类型检索，结果来自下方索引示例。</p>
+
+        <div class="quick-tags">
+          <span>热门检索：</span>
+          <a href="#latest" data-q="高清纪录片">高清纪录片</a>
+          <a href="#latest" data-q="公开课">公开课</a>
+          <a href="#latest" data-q="系统镜像">系统镜像</a>
+          <a href="#latest" data-q="电子书合集">电子书合集</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 320 300" role="presentation">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#e4f2ea"/>
+              <stop offset="1" stop-color="#ffffff"/>
+            </linearGradient>
+          </defs>
+          <circle cx="160" cy="150" r="132" fill="url(#g1)"/>
+          <circle cx="160" cy="150" r="96" fill="none" stroke="#76c7a4" stroke-width="2" stroke-dasharray="6 8"/>
+          <!-- 熊猫头 -->
+          <circle cx="122" cy="112" r="26" fill="#0f1a16"/>
+          <circle cx="198" cy="112" r="26" fill="#0f1a16"/>
+          <ellipse cx="160" cy="152" rx="58" ry="50" fill="#ffffff" stroke="#dfe6e1"/>
+          <circle cx="140" cy="146" r="7" fill="#0f1a16"/>
+          <circle cx="180" cy="146" r="7" fill="#0f1a16"/>
+          <ellipse cx="160" cy="166" rx="9" ry="7" fill="#0f1a16"/>
+          <path d="M160 173v8M160 181c-6 0-12-3-14-7M160 181c6 0 12-3 14-7" stroke="#0f1a16" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <!-- 磁铁 -->
+          <path d="M92 236v-14a20 20 0 0 1 40 0v14" fill="none" stroke="#1f7a58" stroke-width="12" stroke-linecap="round"/>
+          <path d="M188 236v-14a20 20 0 0 1 40 0v14" fill="none" stroke="#1f7a58" stroke-width="12" stroke-linecap="round"/>
+          <rect x="86" y="232" width="12" height="12" rx="3" fill="#0f1a16"/>
+          <rect x="222" y="232" width="12" height="12" rx="3" fill="#0f1a16"/>
+          <path d="M104 226h84" stroke="#76c7a4" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 7"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 索引分类 -->
+  <section id="index">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>磁力熊猫的索引分类</h2>
+        <p>索引按资源用途划分，方便先定位大类，再用关键词缩小范围。分类只描述内容方向，不改变检索方式。</p>
+      </div>
+      <div class="grid g3">
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f7a58" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z" fill="#1f7a58" stroke="none"/></svg>
+          </div>
+          <h3>影视与纪录片</h3>
+          <p>收录影片、剧集与纪录片名称，常见标注包含清晰度与音频语言，适合按片名或年份查找。</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f7a58" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </div>
+          <h3>软件与系统镜像</h3>
+          <p>面向桌面软件与系统安装镜像，条目中会标出体积与更新批次，便于判断是否符合设备条件。</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f7a58" stroke-width="2" stroke-linecap="round"><path d="M5 4h9l5 5v11H5z"/><path d="M14 4v5h5"/></svg>
+          </div>
+          <h3>文档与学习资料</h3>
+          <p>包含电子书、公开课讲义与资料合集，多按主题打包，检索时可用书名加格式词提高命中率。</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f7a58" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l4 4"/></svg>
+          </div>
+          <h3>高频检索词</h3>
+          <p>页面会保留近期被反复使用的检索词，磁力熊猫以这类词作为关键词建议，减少反复试错。</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f7a58" stroke-width="2" stroke-linecap="round"><path d="M12 3v18M3 12h18"/></svg>
+          </div>
+          <h3>多来源聚合</h3>
+          <p>同一资源可能来自不同索引来源，磁力熊猫把名称与哈希并列显示，便于对比选择。</p>
+        </article>
+        <article class="card">
+          <div class="ico" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1f7a58" stroke-width="2" stroke-linecap="round"><path d="M4 7h16v10H4z"/><path d="M8 11h4"/></svg>
+          </div>
+          <h3>链接与哈希</h3>
+          <p>条目提供完整磁力链接与哈希值两种形式，复制后可直接粘贴到支持磁力的下载客户端。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新收录 -->
+  <section id="latest" style="padding-top:8px;">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>最新收录示例</h2>
+        <p>以下为索引条目示例，展示磁力熊猫列表的字段结构：分类标签、资源名称、体积说明与磁力哈希。</p>
+      </div>
+      <div class="list" id="resultList">
+        <div class="list-item" data-keywords="高清纪录片 自然 4k 影视">
+          <span class="tag">影视</span>
+          <div class="body">
+            <strong>自然纪录影像合集 · 4K 高码率</strong>
+            <span>视频 / 约 42.6 GB / 多语字幕</span>
+            <span class="hash">magnet:?xt=urn:btih:示例—纪录片—0001</span>
+          </div>
+        </div>
+        <div class="list-item" data-keywords="公开课 讲义 学习资料 文档">
+          <span class="tag">文档</span>
+          <div class="body">
+            <strong>大学公开课讲义合辑 · PDF 与课件</strong>
+            <span>文档 / 约 1.8 GB / 按学期分卷</span>
+            <span class="hash">magnet:?xt=urn:btih:示例—公开课—0002</span>
+          </div>
+        </div>
+        <div class="list-item" data-keywords="系统镜像 软件 iso 装机">
+          <span class="tag">软件</span>
+          <div class="body">
+            <strong>桌面系统安装镜像 · 通用版 ISO</strong>
+            <span>镜像 / 约 5.4 GB / x64 架构</span>
+            <span class="hash">magnet:?xt=urn:btih:示例—系统镜像—0003</span>
+          </div>
+        </div>
+        <div class="list-item" data-keywords="电子书合集 文档 阅读 epub">
+          <span class="tag">文档</span>
+          <div class="body">
+            <strong>电子书合集 · EPUB 与 MOBI 双格式</strong>
+            <span>文档 / 约 3.1 GB / 按作者归档</span>
+            <span class="hash">magnet:?xt=urn:btih:示例—电子书—0004</span>
+          </div>
+        </div>
+        <div class="list-item" data-keywords="剧集 影视 1080p 合集">
+          <span class="tag">影视</span>
+          <div class="body">
+            <strong>剧集合集 · 1080P 内嵌字幕</strong>
+            <span>视频 / 约 68.2 GB / 全季打包</span>
+            <span class="hash">magnet:?xt=urn:btih:示例—剧集—0005</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 说明 -->
+  <section id="howto" style="padding-top:12px;">
+    <div class="wrap split">
+      <div class="prose">
+        <div class="sec-head" style="margin-bottom:18px;">
+          <h2>磁力熊猫怎么用</h2>
+        </div>
+        <p>磁力熊猫本身不存储文件，页面承担的是“找到链接”这一步。访问者在搜索框中输入名称，页面在已收录的索引中匹配条目，返回名称、体积与哈希。确认内容方向符合预期后，复制链接进入下一步。</p>
+        <p>检索时把范围收窄往往比反复更换关键词更有效。片名加年份、软件名加架构、书名加文件格式，都是常见的组合方式。磁力熊猫的分类标签也会提示资源属于影视、软件还是文档，避免仅凭名称误判。</p>
+        <p>需要说明的是，索引对资源的描述来自收录时的记录，体积与格式可能随来源不同而变化。下载前核对哈希与名称是否一致，是使用磁力链接时的基本习惯。</p>
+      </div>
+      <aside class="panel">
+        <h3>三步完成一次检索</h3>
+        <ol class="steps">
+          <li><b>输入关键词</b>：使用完整名称或名称加限定词，减少无关结果。</li>
+          <li><b>核对条目</b>：查看分类标签、体积与哈希，确认是否为所需版本。</li>
+          <li><b>复制磁力链接</b>：把链接粘贴到支持磁力的下载客户端开始任务。</li>
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 问答 -->
+  <section id="faq" style="padding-top:12px;">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>关于磁力熊猫的常见问题</h2>
+        <p>以下回答聚焦检索流程与链接使用，不涉及具体资源内容。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>磁力熊猫保存文件吗？</summary>
+          <p>不保存。页面只呈现索引条目中的名称、体积与磁力哈希，实际文件由链接指向的来源提供。</p>
+        </details>
+        <details>
+          <summary>搜索不到结果怎么办？</summary>
+          <p>先缩短关键词，去掉多余修饰；再尝试用分类标签限定方向。若仍无结果，说明当前索引未收录该条目。</p>
+        </details>
+        <details>
+          <summary>磁力链接和哈希有什么区别？</summary>
+          <p>磁力链接是完整地址，可直接粘贴使用；哈希是链接中的标识部分，适合在客户端中单独填写。</p>
+        </details>
+        <details>
+          <summary>为什么同一名称有多个条目？</summary>
+          <p>不同来源对同一资源的打包方式、清晰度或分卷结构可能不同，磁力熊猫并列展示以便对比。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 下载条 -->
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="dl-bar">
+        <div>
+          <h2>把磁力熊猫放到桌面</h2>
+          <p>下载入口用于获取桌面端检索工具，安装后可直接在本地输入关键词并复制链接。当前版本信息以发布记录为准。</p>
+        </div>
+        <a class="btn-dl" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 12l5 5 5-5"/><path d="M5 20h14"/></svg>
+          下载
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-top">
+      <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-hidden="true">
+        <rect width="64" height="64" rx="14" fill="#0f1a16"/>
+        <circle cx="24" cy="22" r="8" fill="#f2f5f0"/>
+        <circle cx="42" cy="22" r="8" fill="#f2f5f0"/>
+        <circle cx="24" cy="23" r="3.4" fill="#0f1a16"/>
+        <circle cx="42" cy="23" r="3.4" fill="#0f1a16"/>
+        <ellipse cx="33" cy="40" rx="16" ry="13" fill="#f2f5f0"/>
+        <ellipse cx="33" cy="43" rx="5" ry="4" fill="#0f1a16"/>
+        <path d="M20 50v8M46 50v8" stroke="#76c7a4" stroke-width="4" stroke-linecap="round"/>
+      </svg>
+      <span class="logo-text">磁力熊猫</span>
+    </div>
+    <div class="foot-links">
+      <a href="#search">资源检索</a>
+      <a href="#index">索引分类</a>
+      <a href="#latest">最新收录</a>
+      <a href="#howto">使用说明</a>
+      <a href="#faq">常见问题</a>
+      <a href="#top">返回顶部</a>
+    </div>
+    <p class="copy">磁力熊猫 · 磁力链接检索入口，页面内容为索引信息展示。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var form = document.getElementById('searchForm');
+  var input = document.getElementById('kw');
+  var hint = document.getElementById('hint');
+  var items = Array.prototype.slice.call(document.querySelectorAll('#resultList .list-item'));
+  var list = document.getElementById('resultList');
+
+  function runSearch(){
+    var q = (input.value || '').trim().toLowerCase();
+    if(!q){
+      items.forEach(function(el){ el.style.display = ''; });
+      hint.textContent = '支持按名称、清晰度或文件类型检索，结果来自下方索引示例。';
+      return;
+    }
+    var hit = 0;
+    items.forEach(function(el){
+      var text = (el.textContent + ' ' + (el.getAttribute('data-keywords')||'')).toLowerCase();
+      var ok = text.indexOf(q) !== -1;
+      el.style.display = ok ? '' : 'none';
+      if(ok) hit++;
+    });
+    hint.textContent = '关键词“' + input.value.trim() + '”匹配到 ' + hit + ' 条索引示例。';
+  }
+
+  form.addEventListener('submit', function(e){ e.preventDefault(); runSearch(); });
+  input.addEventListener('input', runSearch);
+
+  document.querySelectorAll('.quick-tags a').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      input.value = a.getAttribute('data-q') || a.textContent;
+      runSearch();
+      document.getElementById('latest').scrollIntoView({behavior:'smooth'});
+    });
+  });
+})();
+</script>
+</body>
+  </html>
