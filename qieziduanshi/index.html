@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>茄子短视频官网-茄子短视频官网下载_短视频创作与浏览平台</title>
+<meta name="description" content="茄子短视频官网首页，提供短视频浏览、创作、收藏与分享的一站式入口，了解茄子短视频官网的栏目内容、创作者工具与使用方式。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%237b2ff2'/%3E%3Cpath d='M26 20l18 12-18 12z' fill='%23ffd94a'/%3E%3C/svg%3E">
+<style>
+:root{
+  --violet:#7b2ff2;
+  --violet-deep:#4c14a8;
+  --amber:#ffd94a;
+  --ink:#1c1726;
+  --ink-soft:#4a4358;
+  --line:#e8e2f5;
+  --bg:#faf8ff;
+  --card:#ffffff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img,svg{display:block;}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+
+/* header */
+header.site{
+  position:sticky;top:0;z-index:50;
+  background:rgba(250,248,255,.9);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:16px;height:68px;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px;letter-spacing:.3px;color:var(--violet-deep);}
+.brand svg{width:34px;height:34px;flex:none;}
+.nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+.nav-links a{
+  font-size:14.5px;color:var(--ink-soft);padding:8px 12px;border-radius:9px;
+  transition:background .18s,color .18s;
+}
+.nav-links a:hover{background:#efe7ff;color:var(--violet-deep);}
+.nav-cta{
+  background:var(--violet);color:#fff!important;border-radius:10px;
+  padding:9px 18px!important;font-weight:600;
+}
+.nav-cta:hover{background:var(--violet-deep);}
+.menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:9px;padding:7px 11px;font-size:14px;color:var(--ink-soft);}
+
+/* hero */
+.hero{
+  padding:56px 0 44px;
+  background:
+    radial-gradient(700px 320px at 88% 0%, #efe4ff 0%, transparent 70%),
+    radial-gradient(560px 300px at 4% 100%, #fff3c9 0%, transparent 72%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;color:var(--violet-deep);
+  background:#efe7ff;border-radius:999px;padding:5px 14px;margin-bottom:18px;
+}
+.eyebrow span.dot{width:7px;height:7px;border-radius:50%;background:var(--violet);}
+h1{
+  font-size:clamp(30px,4.4vw,46px);line-height:1.22;font-weight:800;
+  letter-spacing:-.5px;color:var(--ink);
+}
+.hero-lead{margin-top:18px;font-size:16.5px;color:var(--ink-soft);max-width:36em;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  font-size:15px;font-weight:600;border-radius:12px;padding:13px 24px;
+  transition:transform .16s,box-shadow .16s,background .16s;
+}
+.btn-primary{background:var(--violet);color:#fff;box-shadow:0 10px 24px -10px rgba(123,47,242,.85);}
+.btn-primary:hover{background:var(--violet-deep);transform:translateY(-2px);}
+.btn-ghost{background:#fff;color:var(--violet-deep);border:1px solid var(--line);}
+.btn-ghost:hover{border-color:#cbb6f7;transform:translateY(-2px);}
+.btn[aria-disabled="true"]{opacity:.55;box-shadow:none;}
+.hero-stats{display:flex;gap:30px;margin-top:34px;flex-wrap:wrap;}
+.hero-stats b{display:block;font-size:22px;color:var(--violet-deep);}
+.hero-stats small{font-size:13px;color:var(--ink-soft);}
+
+.phone-card{
+  background:linear-gradient(160deg,#3a1078,#7b2ff2 62%,#a86bff);
+  border-radius:26px;padding:22px;color:#fff;
+  box-shadow:0 30px 60px -30px rgba(58,16,120,.75);
+}
+.phone-screen{
+  background:#160d2b;border-radius:18px;padding:16px;min-height:300px;
+  display:flex;flex-direction:column;gap:12px;
+}
+.mini-head{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#c9b6f5;}
+.mini-video{
+  border-radius:12px;overflow:hidden;background:#241641;
+  display:flex;align-items:center;justify-content:center;height:132px;
+}
+.mini-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.mini-tile{background:#241641;border-radius:10px;height:56px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#b9a4ec;text-align:center;padding:0 6px;}
+.phone-foot{display:flex;gap:8px;margin-top:auto;font-size:11px;color:#c9b6f5;}
+.chip{background:rgba(255,255,255,.12);border-radius:999px;padding:4px 10px;}
+
+/* sections */
+section{padding:60px 0;}
+.section-head{max-width:44em;margin-bottom:36px;}
+.section-kicker{font-size:13px;font-weight:700;letter-spacing:1.5px;color:var(--violet);text-transform:uppercase;}
+h2{font-size:clamp(23px,2.8vw,31px);line-height:1.3;font-weight:800;margin-top:10px;letter-spacing:-.3px;}
+.section-head p{margin-top:14px;color:var(--ink-soft);font-size:15.5px;}
+
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:18px;
+  padding:26px;transition:transform .18s,box-shadow .18s,border-color .18s;
+}
+.card:hover{transform:translateY(-3px);border-color:#d6c5f8;box-shadow:0 20px 40px -28px rgba(76,20,168,.5);}
+.card .ico{
+  width:42px;height:42px;border-radius:12px;background:#f1e9ff;
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+}
+.card h3{font-size:17.5px;font-weight:700;margin-bottom:9px;}
+.card p{font-size:14.8px;color:var(--ink-soft);}
+.card .tag{display:inline-block;margin-top:14px;font-size:12.5px;font-weight:600;color:var(--violet-deep);background:#f4edff;border-radius:999px;padding:4px 12px;}
+
+/* content list */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;}
+.item-list{list-style:none;display:flex;flex-direction:column;gap:20px;}
+.item-list li{padding-left:22px;position:relative;}
+.item-list li::before{
+  content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:3px;
+  background:var(--amber);border:2px solid var(--violet);transform:rotate(45deg);
+}
+.item-list strong{display:block;font-size:15.8px;margin-bottom:4px;}
+.item-list span{font-size:14.6px;color:var(--ink-soft);}
+
+.quote-panel{
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;
+}
+.quote-panel h3{font-size:16.5px;margin-bottom:14px;}
+.bar-row{display:flex;align-items:center;gap:12px;margin-bottom:14px;font-size:13.5px;color:var(--ink-soft);}
+.bar-row em{font-style:normal;width:96px;flex:none;}
+.bar{flex:1;height:9px;border-radius:999px;background:#f0eaff;overflow:hidden;}
+.bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--violet),#b07bff);}
+.quote-panel .note{margin-top:16px;font-size:13px;color:#7a728c;line-height:1.7;}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:step;}
+.step{
+  background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;position:relative;
+}
+.step::before{
+  counter-increment:step;content:"0" counter(step);
+  font-size:13px;font-weight:800;color:#fff;background:var(--violet);
+  width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;
+}
+.step h3{font-size:16.5px;margin-bottom:8px;}
+.step p{font-size:14.6px;color:var(--ink-soft);}
+
+/* faq */
+.faq{display:flex;flex-direction:column;gap:14px;max-width:820px;}
+details{
+  background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 22px;
+}
+details[open]{border-color:#d6c5f8;}
+summary{
+  cursor:pointer;font-weight:700;font-size:15.5px;list-style:none;
+  display:flex;justify-content:space-between;gap:16px;align-items:center;
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{content:"+";color:var(--violet);font-size:20px;font-weight:600;line-height:1;}
+details[open] summary::after{content:"–";}
+details p{margin-top:12px;font-size:14.8px;color:var(--ink-soft);}
+
+/* download band */
+.dl-band{
+  background:linear-gradient(130deg,#2a0b5e,#7b2ff2 70%,#9c5bff);
+  border-radius:22px;padding:40px;color:#fff;
+  display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;
+}
+.dl-band h2{color:#fff;margin-top:0;}
+.dl-band p{color:#ded0ff;margin-top:10px;font-size:15px;max-width:40em;}
+.btn-dl{
+  background:var(--amber);color:#3a1078;font-weight:800;
+  pointer-events:none;opacity:.9;
+}
+
+/* footer */
+footer.site{
+  border-top:1px solid var(--line);background:#f4f0fd;padding:44px 0 30px;margin-top:20px;
+}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;}
+.foot-brand{display:flex;align-items:center;gap:10px;font-weight:800;color:var(--violet-deep);font-size:16px;margin-bottom:12px;}
+.foot-brand svg{width:30px;height:30px;}
+.foot-grid p{font-size:13.8px;color:var(--ink-soft);max-width:30em;}
+footer h4{font-size:14px;margin-bottom:12px;color:var(--ink);}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+footer ul a{font-size:13.8px;color:var(--ink-soft);}
+footer ul a:hover{color:var(--violet-deep);}
+.copyright{
+  margin-top:32px;padding-top:18px;border-top:1px solid #e2daf3;
+  font-size:12.8px;color:#857c99;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+
+@media (max-width:900px){
+  .hero-grid,.split,.grid-3,.grid-2,.steps,.foot-grid{grid-template-columns:1fr;}
+  .hero-grid{gap:34px;}
+  .nav-links{display:none;}
+  .nav-links.open{
+    display:flex;position:absolute;top:68px;left:0;right:0;
+    background:#fff;border-bottom:1px solid var(--line);
+    flex-direction:column;align-items:stretch;padding:12px 24px 18px;gap:4px;
+  }
+  .nav-links.open a{padding:11px 12px;}
+  .menu-toggle{display:block;}
+  .nav{position:relative;}
+  .phone-card{order:-1;max-width:400px;margin:0 auto;}
+  .hero{padding:38px 0 34px;}
+  section{padding:44px 0;}
+  .dl-band{padding:28px 24px;}
+  .foot-grid{gap:26px;}
+}
+@media (max-width:520px){
+  .wrap{padding:0 18px;}
+  .hero-stats{gap:20px;}
+  .hero-stats b{font-size:19px;}
+  .btn{padding:12px 18px;font-size:14.5px;}
+  .card,.step,.quote-panel{padding:20px;}
+}
+</style>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#7b2ff2"/><path d="M26 20l18 12-18 12z" fill="#ffd94a"/></svg>
+      茄子短视频官网
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">菜单</button>
+    <nav class="nav-links" id="navLinks" aria-label="主导航">
+      <a href="#features">平台特色</a>
+      <a href="#creator">创作者工具</a>
+      <a href="#guide">使用流程</a>
+      <a href="#faq">常见问题</a>
+      <a class="nav-cta" href="#download">获取客户端</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>短视频浏览与创作入口</span>
+        <h1>茄子短视频官网</h1>
+        <p class="hero-lead">茄子短视频官网是浏览短视频、发布原创作品与收藏喜欢的片段的入口页面。这里汇集推荐流、创作工具与内容分类，帮助你快速找到想看的内容，也能把生活里的片段剪成一段作品。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#features">了解平台特色</a>
+          <a class="btn btn-ghost" href="#creator">查看创作工具</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>推荐 · 关注 · 同城</b><small>三类内容入口</small></div>
+          <div><b>竖屏全屏播放</b><small>适配手机浏览</small></div>
+          <div><b>剪辑 · 配乐 · 字幕</b><small>内置创作能力</small></div>
+        </div>
+      </div>
+      <div class="phone-card" aria-hidden="true">
+        <div class="phone-screen">
+          <div class="mini-head"><span>推荐</span><span>关注 · 同城</span></div>
+          <div class="mini-video">
+            <svg width="54" height="54" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" fill="rgba(255,255,255,.14)"/><path d="M26 20l18 12-18 12z" fill="#ffd94a"/></svg>
+          </div>
+          <div class="mini-row">
+            <div class="mini-tile">生活记录</div>
+            <div class="mini-tile">美食探店</div>
+          </div>
+          <div class="mini-row">
+            <div class="mini-tile">旅行风光</div>
+            <div class="mini-tile">手作教程</div>
+          </div>
+          <div class="phone-foot"><span class="chip">点赞</span><span class="chip">评论</span><span class="chip">收藏</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">Platform</span>
+        <h2>茄子短视频官网提供的浏览与发现方式</h2>
+        <p>打开茄子短视频官网，最先接触的是内容入口。不同入口对应不同的观看目的：想随便看看、想追熟悉的创作者、想找身边的人在拍什么，路径各不相同。</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7b2ff2" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h13"/></svg>
+          </div>
+          <h3>推荐流</h3>
+          <p>竖屏连续播放，上下滑动切换内容。推荐流按内容类型与观看习惯排列片段，适合没有明确目标时随手浏览。</p>
+          <span class="tag">上下滑动切换</span>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7b2ff2" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg>
+          </div>
+          <h3>关注与同城</h3>
+          <p>关注页集中呈现已订阅创作者的更新，同城页则把镜头对准附近的生活片段，两类内容都按时间呈现。</p>
+          <span class="tag">订阅与附近</span>
+        </article>
+        <article class="card">
+          <div class="ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7b2ff2" stroke-width="2" stroke-linecap="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-2.8L7 19l1-6-4-4 5.5-.5z"/></svg>
+          </div>
+          <h3>收藏与喜欢</h3>
+          <p>看到想再看一遍的片段，可以点赞或加入收藏。收藏夹按内容类别归档，方便之后回看或作为创作选题。</p>
+          <span class="tag">按类别归档</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="creator">
+    <div class="wrap split">
+      <div>
+        <span class="section-kicker">Creator</span>
+        <h2>在茄子短视频官网完成一次简单的创作</h2>
+        <p style="margin-top:14px;color:var(--ink-soft);font-size:15.5px;">创作不一定要专业设备。手机拍摄的素材导入后，可以按顺序完成剪切、配乐与字幕，再选择发布或先存草稿。以下是创作环节里最常被用到的几项能力。</p>
+        <ul class="item-list" style="margin-top:26px;">
+          <li><strong>分段剪辑</strong><span>对素材进行裁剪与拼接，保留需要的片段，去掉多余的等待与重复。</span></li>
+          <li><strong>曲库配乐</strong><span>选择与画面节奏匹配的背景音乐，音量可单独调节，避免盖住人声。</span></li>
+          <li><strong>字幕与贴纸</strong><span>为口播内容添加字幕，或用贴纸标注重点，提升信息传达的清晰度。</span></li>
+          <li><strong>封面与标题</strong><span>从画面中挑一帧作为封面，配合标题决定片段在列表中被看到的第一印象。</span></li>
+        </ul>
+      </div>
+      <aside class="quote-panel">
+        <h3>创作者常见关注点</h3>
+        <div class="bar-row"><em>剪辑操作</em><div class="bar"><i style="width:86%"></i></div></div>
+        <div class="bar-row"><em>音乐素材</em><div class="bar"><i style="width:72%"></i></div></div>
+        <div class="bar-row"><em>字幕效率</em><div class="bar"><i style="width:64%"></i></div></div>
+        <div class="bar-row"><em>封面选择</em><div class="bar"><i style="width:58%"></i></div></div>
+        <p class="note">上图为栏目示意，用于说明创作环节中常被提及的操作项，不代表平台统计数据。具体功能以客户端内实际提供的版本为准。</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="guide" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">Steps</span>
+        <h2>从进入到发布的三个步骤</h2>
+        <p>茄子短视频官网把观看与创作放在同一条路径上：先看，再试，最后发布。下面按实际操作顺序说明。</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <h3>浏览并确定方向</h3>
+          <p>在推荐流与关注页浏览片段，留意哪些内容类型自己看得下去，这往往是选题的起点。</p>
+        </div>
+        <div class="step">
+          <h3>拍摄与剪辑</h3>
+          <p>用手机横向或竖向拍摄素材，导入后按段落裁剪，配上音乐与字幕，预览整体节奏。</p>
+        </div>
+        <div class="step">
+          <h3>发布与回看</h3>
+          <p>选择封面与标题后发布，之后可在作品页查看播放与互动情况，作为下一次调整的依据。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap split">
+      <div>
+        <span class="section-kicker">Focus</span>
+        <h2>内容分类与观看场景</h2>
+        <p style="margin-top:14px;color:var(--ink-soft);font-size:15.5px;">短视频的价值在于短时间内的信息密度。茄子短视频官网的内容分区围绕日常场景组织，方便按需进入。</p>
+      </div>
+      <ul class="item-list">
+        <li><strong>生活记录</strong><span>日常片段、家庭瞬间与城市街景，节奏舒缓，适合碎片时间观看。</span></li>
+        <li><strong>美食与探店</strong><span>菜品制作过程与店铺体验，画面信息集中，常被用于寻找附近的选择。</span></li>
+        <li><strong>技能与手作</strong><span>步骤清晰的教学类片段，适合反复暂停跟做，收藏率相对更高。</span></li>
+        <li><strong>旅行与风光</strong><span>以画面与音乐为主的风景记录，观看门槛低，适合作为背景播放。</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="download" style="padding-top:0;">
+    <div class="wrap">
+      <div class="dl-band">
+        <div>
+          <h2>获取茄子短视频官网客户端</h2>
+          <p>客户端提供完整的浏览、收藏与创作功能，竖屏播放与剪辑工具在同一处完成。下载入口开放后将在此处提供安装包，当前页面已预留位置。</p>
+        </div>
+        <a class="btn btn-dl" href="#" data-download-placeholder="true" aria-disabled="true" tabindex="-1">下载</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-kicker">FAQ</span>
+        <h2>关于茄子短视频官网的常见问题</h2>
+        <p>以下问题围绕访问入口、使用方式与内容管理展开，回答以页面与客户端中可确认的信息为准。</p>
+      </div>
+      <div class="faq">
+        <details open>
+          <summary>茄子短视频官网可以直接观看视频吗？</summary>
+          <p>本页是官网首页，承担介绍与入口的作用，主要说明平台的内容分区与创作能力。完整观看与操作在客户端内进行，页面中的栏目导航用于了解对应模块。</p>
+        </details>
+        <details>
+          <summary>发布作品需要准备什么？</summary>
+          <p>一段可用的拍摄素材即可开始。导入后进行裁剪、配乐与字幕处理，再选择封面和标题发布。素材清晰、画面稳定、声音可听清，通常比复杂特效更重要。</p>
+        </details>
+        <details>
+          <summary>收藏的内容会一直保留吗？</summary>
+          <p>收藏夹用于保存想回看的片段，按内容类别归档。若原作品被创作者删除或调整，收藏条目也可能随之变化，建议对重要内容另行保存。</p>
+        </details>
+        <details>
+          <summary>客户端什么时候可以下载？</summary>
+          <p>页面中的下载按钮为预留入口，当前尚不可用，按钮处于禁用状态。待安装包就绪后，会通过同一位置提供下载。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#7b2ff2"/><path d="M26 20l18 12-18 12z" fill="#ffd94a"/></svg>
+          茄子短视频官网
+        </div>
+        <p>茄子短视频官网首页，介绍短视频浏览、收藏与创作的基本路径，帮助访问者了解平台的内容分区与操作方式。</p>
+      </div>
+      <div>
+        <h4>页面导航</h4>
+        <ul>
+          <li><a href="#features">平台特色</a></li>
+          <li><a href="#creator">创作者工具</a></li>
+          <li><a href="#guide">使用流程</a></li>
+          <li><a href="#faq">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>内容分类</h4>
+        <ul>
+          <li><a href="#features">推荐流</a></li>
+          <li><a href="#creator">剪辑与配乐</a></li>
+          <li><a href="#guide">发布流程</a></li>
+          <li><a href="#download">客户端下载</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <span>茄子短视频官网 · 页面内容用于主题介绍</span>
+      <span>功能与入口以客户端实际版本为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('menuToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && links.classList.contains('open')) {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+</script>
+</body>
+          </html>
